@@ -1,0 +1,383 @@
+/*導覽列*/
+a{color: black}
+
+.text-center{
+text-align: center;
+}
+
+
+.nav-login > li > .btn {
+margin:7px 5px;	
+}
+
+@media (max-width: 992px){
+#main-search {
+    border-radius: 30px;
+}
+
+}
+@media (min-width: 768px){
+.navbar-right~.navbar-right {
+     margin-right: 0px; 
+}
+.form-group{
+	margin-right: 15px
+}
+
+}
+@media (min-width: 992px){
+#main-search{
+	border-radius: 30px;
+	
+}
+}
+
+.navbar-form{
+padding:0px;
+}
+
+
+@media (max-width: 768px){
+#addFood{
+	right: 0px;
+    position: absolute;
+	margin-top: 80px;
+	float: right;
+	z-index: 1000;
+	color:white; 
+	padding: 10px 14px;
+	font-size:20px;
+	border: solid 2px white;
+	
+}
+}
+@media (min-width: 769px){
+#addFood{
+	right: 0px;
+    position: absolute;
+	margin-top: 120px;
+	float: right;
+	z-index: 1000;
+	color:white; 
+	padding: 10px 14px;
+	font-size:20px;
+	border: solid 2px white;
+
+}
+}
+/*導覽列end*/
+
+#addFood:active{
+	border: solid 2px white;
+}
+#addFood:focus{
+	border: solid 2px white;
+}
+
+
+.style-btn{
+	margin:10px auto;
+
+}
+
+#select-food-style{
+
+padding-right: 30px;
+margin-top: 55px;
+
+}
+
+#select-food-style > .btn{
+
+	margin:10px 0px;
+}
+
+@media screen and (max-width: 992px) {
+#select-food-style > .btn{
+	margin:10px 10px;
+}
+}
+#select-food-time > .btn{
+	margin:10px 10px;
+}
+#food_asemble_choose > div >.btn.active{
+	background: #000033;
+	color:white;
+}
+
+
+#ramdom-food {
+	margin-top: 10px
+}
+
+.more{
+	background: #000033;
+	color:white;
+	float:right;
+	margin-right: 15px;
+	border:none;
+}
+#ramdom-food > .more{
+	margin-top: 0px;
+}
+
+#ramdom-food-create{
+	border-radius: 10px;
+	margin-top: 35px;
+	vertical-align: middle;
+	text-align:center;
+	width:100%;
+	padding:15px;
+	font-size: 25px;
+	background: linear-gradient(#f0ad4e,#eb9316);
+	}
+#ramdom-food-create:hover{
+background: linear-gradient(#f0ad4e, #d58512);
+cursor: pointer;
+}
+#ramdom-food-create:active{
+	background:#d58512
+}
+
+.main-food-display{
+	border-radius: 10px;
+	margin-top: 35px;
+	vertical-align: middle;
+	text-align:center;
+	width:100%;
+	padding:15px;
+	font-size: 25px;
+background: linear-gradient(gray, white);
+
+
+}
+.rank-margin{
+	overflow:hidden;	
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.rank-guy{
+	margin-top: 10px;
+	
+}
+.rank-guy-pic{
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+
+
+.rank-intro{
+	
+	padding-left: 0px;
+	
+	font-size: 20px;
+	vertical-align: middle;
+}
+
+.more{
+	margin-top: 10px;
+	
+}
+.more:hover{
+	color :white;
+}
+
+#online-class{
+	font-size: 22px
+}
+
+
+footer{
+	    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 100px;
+    color: #777;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+}
+
+
+/*new*/
+.foodblock{
+	font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    
+}
+.foodblock > a{
+	color:#555!important;
+}
+
+#rank_board{
+	border: 3px solid #000033;
+}
+
+.rank_board_item{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 5px 5px 0px 5px;
+	border-bottom: 2px solid #000033;
+}
+
+.rank_board_item:last-child{
+	border-bottom: none;
+}
+.rank_board_item_name{
+	padding: 0px;
+}
+.rank_board_item_name > span > small{
+	    font-size: 10%;
+    float: right;
+}
+.rank_board_item_name > span:first-child{
+	float: right;
+}
+
+.number_circle{
+	width: 30px;
+	height: 30px;
+	border-radius: 20px;
+	background: #000033;
+	color: white;
+	text-align: center;
+}
+.rank_more{
+	text-align: center;
+	background: #000033;
+	color: white;
+	cursor: pointer;
+}
+
+.rank_board_item_pic{
+	padding: 0;
+
+}
+.rank_board_item_pic > img{
+	margin: 0px 3px 0px 3px;
+}
+
+#random_button{
+	    margin-right: 100px;
+    float: right;
+    margin-top: 40px;
+
+}
+#random_button > .btn{
+	border: solid 2px #000033;
+	margin: 0px 10px 0px 10px;
+}
+
+#random_food{
+	margin: 50px 10px 50px 10px;
+}
+#random_food > .col-md-2{
+	padding: 0;
+}
+#random_food > .col-md-1{
+
+	height: 180px;
+	font-size: 50px;
+	text-align: center;
+}
+#random_food > .col-md-1 > span{
+    display: block;
+    margin-top: 50px;
+}
+#class_board{
+	border: solid 2px #000033;
+}
+.class_board_item{
+	height: 106px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 5px 5px 0px 5px;
+	border-bottom: 2px solid #000033;
+	 font-weight: bold;
+
+}
+.class_board_item_word{
+    font-size: 14px;
+}
+.rank_board_item_pic{
+	margin-top: px;
+}
+
+#index_food_class{
+	background: #000033;
+	color: white;
+}
+
+#index_food_class >div >div>div .thumbnail{
+	margin: 20px;
+}
+
+#agree{    
+    border: 2px solid #000033;
+    margin: 0px 20%;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.radius-border{
+	margin: 2px;
+	border: 2px solid #000033;
+	border-radius: 0px;
+}
+.radius-border > .btn:hover {
+	background: #000033;
+	color:white;
+
+}
+.radius-border >.btn:active{
+	background: #000033;
+	color:white;
+
+}
+.btn-fix{
+	border: 2px solid #000033;
+    background: transparent;
+}
+.btn-fix:hover{
+	    background: #000033;
+	    color:white;
+
+}
+.border-blue{
+	border: solid 2px #000033;
+}
+.bold{
+	font-weight: bold;
+}
+
+#food_asemble_choose > div >.btn{
+	background: #99bbff;
+    border: none;
+    color: #0000cc;
+    border-radius: 10px;
+    margin: 1px 2px;
+}
+#food_asemble_choose > div >.btn:hover{
+	border:none;
+	outline: none;
+};
+#food_asemble_choose > div >.btn .active{
+background: #0000cc;
+    color:#99bbff ;
+};
+
+#cse {
+    width: 60%; /* make sure you don't use inline width */
+    margin: 0 auto;
+}
+.cse .gsc-search-button input.gsc-search-button-v2, input.gsc-search-button-v2 {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+#___gcse_0{display:inline-block;
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}

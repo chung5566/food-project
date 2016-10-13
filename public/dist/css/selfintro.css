@@ -1,0 +1,16 @@
+#username{
+float:right;
+border-right:solid 3px white;
+margin:20px 0px 20px 10px;
+}
+
+#namepic{
+	display: flex;
+	background: #000033;
+	color: white;
+	font-weight: bold;
+}
+
+.img-circle{margin: auto;}
+
+.thumbnail{margin-bottom: 0px}

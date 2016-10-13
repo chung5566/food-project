@@ -1,0 +1,18 @@
+#poster_intro{
+	margin-top: 65px
+}
+
+#post-condition{
+	margin: 5px 0px;
+}
+
+#post-condition > .btn > .glyphicon{
+	top:3px;
+}
+
+.food_pic_intro{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-bottom: 10px;
+	border-bottom: solid 2px #eee ;
+}

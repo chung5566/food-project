@@ -1,0 +1,22 @@
+.inform{
+	display: table;
+    margin: 30px auto;
+}
+.blue-btn {
+    padding: 10px 30px;
+    background: #000033;
+    color: white;
+    border-radius: 0;
+    margin: 0px 5px;
+    }
+.blue-btn:hover{
+color: white;
+
+}
+#cancel{
+	float:right;
+}
+#letjoin{
+	background: white;
+	border: 3px solid black;
+}

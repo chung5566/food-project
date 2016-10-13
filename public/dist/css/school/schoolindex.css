@@ -1,0 +1,33 @@
+.inform{
+	display: table;
+    margin: 30px auto;
+}
+
+.class_unit{
+
+	margin: 10px;
+	border: 2px solid #000033;
+}
+
+.class_unit >  .col-md-3{
+	padding-left: 0px;
+}
+
+.classanduser{
+	display: flex;
+}
+.classanduser > .col-md-4 > .row{
+	    display: inline-flex;
+}
+
+.classer_name{vertical-align: middle;}
+.classer_name > small{
+	    vertical-align: sub;
+}
+.class_name{
+	padding-left: 0px;
+}
+
+.class_intro{
+	margin-top:10px;
+}

@@ -1,0 +1,155 @@
+h1,h2,h3,h4,h5{
+	margin-top: 20px;
+}
+.btn{border-radius: 0;}
+
+font{color:#000033;}
+
+h2{border-bottom: 2px solid #000033;display:inline-block;}
+body { padding-top: 70px; font-size: 16px;font-family: Meiryo, "微軟正黑體", "Microsoft JhengHei";}
+
+a{
+	cursor: pointer;
+}
+a:hover{
+	text-decoration:none;
+}
+
+p{
+	word-break:break-all;
+	word-wrap:break-word 
+}
+
+
+.nav-tabs{border: none}
+
+.modal-open .navbar-fixed-top,
+.modal-open .navbar-fixed-bottom {
+padding-right: 17px;
+}
+
+.tooltip-wide .tooltip {width:300px;}
+.middle{margin-right:auto;margin-left: auto;}
+
+
+.border{
+	border: #eee solid 2px;
+	border-radius: 5px;
+}
+
+.border-bottom{
+	border-bottom: 1px solid #eee;
+	margin-bottom: 15px
+}
+.border-right{
+	border-right: 1px solid #eee;
+
+}
+
+.btn{
+	word-break: break-all;
+	font-size: 15px;
+}
+
+.no-padding{
+	padding: 0px
+}
+
+.no-margin{
+	margin:0px;
+}
+
+
+.thumbnail{
+	padding:0px;
+	
+}
+
+.caption-nav{
+	padding:0px 5px;
+    color: #333;
+}
+
+.jumbotron{
+	margin-bottom: 5px;
+	text-align:center;
+}
+.btn{
+	background: none;
+	color: #000033;
+}
+.btn:hover{
+	outline: 2px solid #000033;
+}
+
+.btn,.btn> .active,.btn-group>.btn.active{
+	z-index: 0;
+}
+.btn-group>.btn.active{
+	z-index: 0;
+}
+
+.navbar{
+	background: #FFFFFF;
+	color: #000053;
+	border:none;
+	
+}
+.main-nav{
+margin-left: 27%;
+}
+.navbar a {
+
+}
+.navbar-toggle{
+	float:left;
+	display: block;
+	border:none;
+	background:none;
+	margin-top: 15px;	
+}
+
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background: #000033;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background: none;
+}
+
+
+.navbar-inverse .navbar-nav>.active>a{
+	background-image:none;
+	background:none;
+	color: #000033;
+
+}
+.navbar-inverse .navbar-nav> li >a{
+padding: 3px 4px;
+margin: 15px 15px 10px 15px;
+
+}
+.active>a {
+	
+	background: none;
+	outline: 2px solid #000033;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+	background: none;
+	color:inherit;
+	box-shadow:none;
+
+}
+
+.navbar-inverse .navbar-nav>li>a{
+	color:#000033;
+}
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus{
+	background: none;
+	color:#000033;
+	outline: 2px solid #000033;
+}
+
+.page-header{
+	border-bottom: none;
+}

@@ -1,0 +1,36 @@
+a{color: white}
+a:hover{
+	color:white;
+}
+
+.thumbnail>img
+{
+/*height:300px;*/
+height: 200px;
+/*width:300px;*/
+}
+.thumbnail{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	box-shadow:none;
+	border: none;
+}
+
+#member_index{
+	background:#000033;
+	float:right;
+	margin-top:20px;
+	width: 40%;
+	color:white;
+}
+
+.blue-btn{
+	padding: 10px 30px;
+	background: #000033;
+	color:white;
+	border-radius: 0;
+	margin: 0px 5px
+}
+.blue-btn:hover{
+	color:white;
+};

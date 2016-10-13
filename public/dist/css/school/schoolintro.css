@@ -1,0 +1,19 @@
+#school_intro > .row{
+
+	border-bottom: 1px solid ;
+	margin:2px 50px;
+}
+
+#join{
+	margin: 50px auto 10px auto;
+	border: 2px solid black;
+	background: white;
+	padding: 10px 40px;
+}
+#member_index{
+	    background: #000033;
+    float: right;
+    margin-top: 20px;
+   
+    color: white;
+}
