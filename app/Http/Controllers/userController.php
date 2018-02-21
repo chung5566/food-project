@@ -76,4 +76,11 @@ class userController extends Controller
 
     return view('member.selfset')->withUser($user);
 }
+public function changepassword(Request $request){
+    $user = Auth::user();
+    $user->password = $request->password;
+    $user->save();
+    return view('member.selfset')->withUser($user);
+
+}
 }

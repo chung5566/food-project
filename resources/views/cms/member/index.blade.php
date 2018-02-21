@@ -79,7 +79,7 @@
 					<td>{{$member->point}}</td>
 					<td>
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-id={{$member->id}} data-name={{$member->name}} data-target="#exampleModal" data-whatever="{{$member->name}}">sendmailto{{$member->name}}</button>
-					<button class="edit-modal btn btn-info" 
+					<button class="edit-modal btn btn-info" data-toggle="modal" data-target="#myModal"
 							data-id="{{$member->id}}" data-name="{{$member->name}}" data-email="{{$member->email}}" data-gender="{{$member->gender}}" data-birth="{{$member->birth}}" data-country="{{$member->country}}" data-identity="{{$member->identity}}" data-selfintro="{{$member->selfintro}}" data-point="{{$member->point}}">
 							<span class="glyphicon glyphicon-edit"></span> Edit
 						</button>
@@ -124,6 +124,7 @@
       </form>
     </div>
   </div>
+</div>
 </div>
 <script>
 $('#exampleModal').on('show.bs.modal', function (event) {
@@ -314,7 +315,7 @@ $(function() {
                 'point':$('#p').val(),
             },
             success: function(data) {
-                $('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.name + "</td><td>" + data.email + "</td><td>" + data.created_at + "</td><td>" + data.updated_at + "</td><td>" + data.gender + "</td><td>" + data.birth + "</td><td>" + data.country + "</td><td>" + data.identity + "</td><td>" + data.selfintro + "</td><td>" + data.point + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-name='" + data.name + "' ><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
+                $('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.name + "</td><td>" + data.email + "</td><td>" + data.created_at + "</td><td>" + data.updated_at + "</td><td>" + data.gender + "</td><td>" + data.birth + "</td><td>" + data.country + "</td><td>" + data.identity + "</td><td>" + data.selfintro + "</td><td>" + data.point + "</td><td><button type='button' class='btn btn-primary' data-toggle='modal' data-id='"+data.id+"' data-name='"+data.name+"' data-target='#exampleModal' data-whatever='"+data.name+"' >sendmailto"+data.name+"</button><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-name='" + data.name + "' ><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
             }
         });
     });

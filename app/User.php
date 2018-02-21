@@ -6,6 +6,7 @@ use App\Task;
 use App\Followers;
 use App\School;
 use App\Comment;
+use App\Mail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -35,11 +36,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class);
     }
-
-
+    public function collecttask()
+    {
+        return $this->hasMany(Collect::class,   'user_id');
+    }
+    public function follower()
+    {
+        return $this->hasMany(Follower::class,  'follow_id');
+    }
     public function follows()
     {
-        return $this->belongsToMany(User::class, Follower::class, 'user_id', 'follow_id');
+        return $this->hasMany(Follower::class,  'user_id');
     }
     public function collects()
     {
@@ -56,6 +63,9 @@ class User extends Authenticatable
     public function comment(){
 
         return $this->hasMany(Comment::class);
+    }
+    public function mails(){
+        return $this->hasMany(Mail::class);
     }
 
 }   

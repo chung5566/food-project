@@ -1,5 +1,9 @@
 a{color: white}
 a:hover{
+	/*color:black;*/
+	font-size: 
+}
+.task_user_inform:hover{
 	color:white;
 }
 
@@ -34,3 +38,12 @@ height: 200px;
 .blue-btn:hover{
 	color:white;
 };
+
+.food_pic_intro{
+	margin:30px;
+}
+
+#filters > ul > li{
+	font-size: 16px;
+
+}

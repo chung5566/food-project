@@ -16,6 +16,7 @@ use App\Recommand;
 use Auth;
 use DB;
 use App\Repositories\TaskRepository;
+use App\Mail;
 class TaskController extends Controller
 {
     /**
@@ -96,9 +97,10 @@ $task->cooktime = $request->cooktime;
 $task->portion = $request->portion;
 $task->shortintro = $request->shortintro;
 $task->tip = $request->tip;
-$task->style_1 = $request->style_1;
-$task->style_2 = $request->style_2;
-$task->style_3 = $request->style_3;
+
+$task->style_1 = implode(",",$request->style_1);
+$task->style_2 = implode(",",$request->style_2);
+$task->style_3 = implode(",",$request->style_3);
 
 
 
@@ -182,15 +184,27 @@ $task->cooktime = $request->cooktime;
 $task->portion = $request->portion;
 $task->shortintro = $request->shortintro;
 $task->tip = $request->tip;
-$regExp = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/';
-preg_match($regExp,$request->video_url,$match);
+if (strpos($request->video_url, 'youtube') != false){
 
-$task->video_url=$match[2];
-$task->img_url = 'http://img.youtube.com/vi/'.$match[2].'/0.jpg';
+  $regExp = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/';
+  preg_match($regExp,$request->video_url,$match);
+  $task->video_url='www.youtube.com/embed/'.$match[2];
+  $task->img_url = 'http://img.youtube.com/vi/'.$match[2].'/0.jpg';
+}
+elseif (strpos($request->video_url, 'facebook') != false) {
+  $task->video_url = 'www.facebook.com/plugins/video.php?href='.rawurlencode($request->video_url);
+  preg_match("~(?:t\.\d+/)?(\d+)~i", $request->video_url, $matches);
+  //str_replace('/videos/', '', $matches[0]);
+  $task->img_url = 'https://graph.facebook.com/'.$matches[0].'/picture';
+}
+else {
+  $task->video_url = $request->video_url;
+  $task->video_type = 'other';
+}
 
-$task->style_1 = $request->style_1;
-$task->style_2 = $request->style_2;
-$task->style_3 = $request->style_3;
+$task->style_1 = implode(",",$request->style_1);
+$task->style_2 = implode(",",$request->style_2);
+$task->style_3 = implode(",",$request->style_3);
 
 
 
@@ -238,7 +252,10 @@ $food->save();
         $recommand=Recommand::where('task_id','=',$id);
         }
 
-
+        /*$collect = User::where('users.id','=',$user->id)->join('collects','users.id','=','collects.user_id')->join('tasks','collects.task_id','=','tasks.id')
+        ->select('tasks.*')->orderBy('created_at', 'desc')->get();
+        $followers = Follower::where('user_id','=',$user->id)->join('users','follow_id','=','users.id')->select('users.*')->orderBy('followers.created_at', 'desc')->get();
+        $fans = Follower::where('follow_id','=',$user->id)->count();*/
 
 
         //dd($task->article_type);
@@ -272,14 +289,23 @@ $food->save();
         $task = Task::find($id);
         $ingredients=Ingredient::where('task_id','=',$id)
         ->get();
+        $style1 = DB::table('tasks')->select('style_1')->where('id','=',$id)->get();
+        #$style = $style->style_1->toArray();
+        $style2 = DB::table('tasks')->select('style_2')->where('id','=',$id)->get();
+        $style3 = DB::table('tasks')->select('style_3')->where('id','=',$id)->get();
+        $style1 = explode(",",$style1[0]->style_1);
+        $style2 = explode(",",$style2[0]->style_2);
+        $style3 = explode(",",$style3[0]->style_3);
+        #dd($style1);
+        #dd($style1[0]['attributes']['style_1']);
         if ($task->article_type=='p'){
             $steps= Step::where('task_id','=',$id)
         ->get();
-            return view('tasks.edit_p')->with('task',$task)->withIngredients($ingredients)->withSteps($steps);
+            return view('tasks.edit_p')->with('task',$task)->withIngredients($ingredients)->withSteps($steps)->with('style1',$style1)->with('style2',$style2)->with('style3',$style3);
         }
         else
-
-            return view('tasks.edit_v')->with('task',$task)->withIngredients($ingredients);
+            
+            return view('tasks.edit_v')->with('task',$task)->withIngredients($ingredients)->with('style1',$style1)->with('style2',$style2)->with('style3',$style3);
         
     }
 
@@ -318,9 +344,9 @@ $task->cooktime = $request->cooktime;
 $task->portion = $request->portion;
 $task->shortintro = $request->shortintro;
 $task->tip = $request->tip;
-$task->style_1 = $request->style_1;
-$task->style_2 = $request->style_2;
-$task->style_3 = $request->style_3;
+$task->style_1 = implode(',',$request->style_1);
+$task->style_2 = implode(',',$request->style_2);
+$task->style_3 = implode(',',$request->style_3);
 
 
 
@@ -328,19 +354,32 @@ $task->style_3 = $request->style_3;
 
 $task->save();
 $user = Auth::user();
-$user->point +=10;
+$user->point +=15;
+$user->save();
 $request->input('ingridient');
+
+Ingredient::where("task_id","=",$task->id)->delete();
+
+
 foreach ($request->input('ingridient') as $key => $ingredient) {
-    
-$food = Ingredient::where('task_id','=',$id)->update([name => $ingredient]);
+$food = new Ingredient;
 $food->name = $ingredient;
 $food->quantity = $request->quantity[$key];
 $food->task_id = $task->id;
 $food->save();
-}
+}   
 
+$old_s = Step::where("task_id","=",$task->id)->get();
+$step_img_count = count($old_s);
+Step::where("task_id","=",$task->id)->delete();
 foreach ($request->input('intro') as $key => $step) {
+
     $food = new Step;
+    
+    if ($key < $step_img_count){
+      $food->img_url = $old_s[$key]->img_url;
+    }
+
      if($request->hasFile('img_url.'.$key)) {
       $file2 = $request->file('img_url.'.$key);
     $extension = $file2->getClientOriginalExtension();
@@ -383,15 +422,27 @@ $task->cooktime = $request->cooktime;
 $task->portion = $request->portion;
 $task->shortintro = $request->shortintro;
 $task->tip = $request->tip;
-$regExp = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/';
-preg_match($regExp,$request->video_url,$match);
+if (strpos($request->video_url, 'youtube') != false){
 
-$task->video_url=$match[2];
-$task->img_url = 'http://img.youtube.com/vi/'.$match[2].'/0.jpg';
+  $regExp = '/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/';
+  preg_match($regExp,$request->video_url,$match);
+  $task->video_url='www.youtube.com/embed/'.$match[2];
+  $task->img_url = 'http://img.youtube.com/vi/'.$match[2].'/0.jpg';
+}
+elseif (strpos($request->video_url, 'facebook') != false) {
+  $task->video_url = 'www.facebook.com/plugins/video.php?href='.rawurlencode($request->video_url);
+  preg_match("~(?:t\.\d+/)?(\d+)~i", $request->video_url, $matches);
+  //str_replace('/videos/', '', $matches[0]);
+  $task->img_url = 'https://graph.facebook.com/'.$matches[0].'/picture';
+}
+else {
+  $task->video_url = $request->video_url;
+  $task->video_type = 'other';
+}
 
-$task->style_1 = $request->style_1;
-$task->style_2 = $request->style_2;
-$task->style_3 = $request->style_3;
+$task->style_1 = implode(',',$request->style_1);
+$task->style_2 = implode(',',$request->style_2);
+$task->style_3 = implode(',',$request->style_3);
 
 
 
@@ -400,6 +451,9 @@ $user = Auth::user();
 $user->point +=15;
 $user->save();
 $request->input('ingridient');
+
+Ingredient::where("task_id","=",$task->id)->delete();
+
 foreach ($request->input('ingridient') as $key => $ingredient) {
 $food = new Ingredient;
 $food->name = $ingredient;
@@ -420,8 +474,8 @@ $food->save();
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        Task::find ( $id )->delete ();
+    {   Mail::where('task_id','=',$id)->delete();
+        Task::find ( $id )->delete();
         return redirect()->action('userController@selfintro');
     }
 }

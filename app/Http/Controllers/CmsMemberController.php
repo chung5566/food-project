@@ -27,7 +27,7 @@ class CmsMemberController extends Controller
      */
     public function index()
     {
-        $members =User::get();
+        $members =User::orderBy('created_at', 'desc')->get();
         return view('cms/member.index')->withMembers($members);
     }
 
@@ -43,10 +43,10 @@ class CmsMemberController extends Controller
 
 	public function mailtomember(Request $request){
 		$mail=new Mail();
-                $mail->sender = 'admin';
-                $mail->sender_name = 'admin';
+                $mail->sender = '實在好家網';
+                $mail->sender_name = '管理員';
                 $mail->reciever = $request->recipient_id;
-                $mail->type = '�޲z��';
+                $mail->type = '管理員';
                 $mail->text = $request->message;
                 $mail->save();
                 

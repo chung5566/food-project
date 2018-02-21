@@ -113,6 +113,7 @@ $(function() {
         }, "json").always(function() { l.stop(); });
         return false;
     });
+    
 
 
         $('#notified').click(function(e) {
@@ -132,9 +133,10 @@ $(function() {
     });
 
 
-    $('.index-select-food').on("click", function() {
+    $('.index-select-food').bind("change", function() {
+        console.log($('#selectstyle').serialize());
                 $.post(selectstyle, $('#selectstyle').serialize(), function(response) {
-                    $("#afterselectold").fadeOut().html('');
+                    $("#afterselectold").html('');
                     //console.log(response)
                     //var contact = JSON.parse(response);
                     for(var i=0;i<5;i++){
@@ -142,12 +144,12 @@ $(function() {
                         console.log(idd);
                     //console.log(response[i].id);
                     var nowurl =window.location.href ;
-                    var a_1 = '<div class="col-md-4"><a href="tasks/'+idd+'" class="thumbnail">'
+                    var a_1 = '<div class="col-md-4 col-xs-4 foodblock"><a href="tasks/'+idd+'" class="thumbnail">'
                         if(response[i].article_type=='p'){
-                        a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[i].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'   
+                        a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[i].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[i].name  +'</a></div>'
                         }
                         else{
-                        a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[i].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'
+                        a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[i].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[i].name+'</a></div>'
 
                         }
                         $("#afterselectold").append(a_1+a_2).fadeIn();
@@ -164,55 +166,55 @@ $(function() {
             var nowurl =window.location.href ;
                 a_1 = '<a href="tasks/'+response[0].id+'" class="thumbnail">';
                 if(response[0].article_type=='p'){
-                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[0].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'   
+                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[0].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[0].name+'</a></div>'   
                 }
                 else{
-                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[0].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'
+                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[0].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[0].name+'</a></div>'
 
                 }
                 a_3 = '<span style="float:right; font-weight:bold;font-size:20px">前菜</span>';
 
 
-            $('#random_food_1').hide().html(a_1+a_2+a_3).fadeIn();
+            $('#random_food_1').hide().html(a_1+a_2).fadeIn();
             
                 a_1 = '<a href="tasks/'+response[1].id+'" class="thumbnail">';
                 if(response[1].article_type=='p'){
-                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[1].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'   
+                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[1].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[1].name+'</a></div>'   
                 }
                 else{
-                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[1].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'
+                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[1].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[1].name+'</a></div>'
 
                 }
                 a_3 = '<span style="float:right; font-weight:bold;font-size:20px">主食</span>';
 
 
-            $('#random_food_2').hide().html(a_1+a_2+a_3).fadeIn();
+            $('#random_food_2').hide().html(a_1+a_2).fadeIn();
 
                 a_1 = '<a href="tasks/'+response[2].id+'" class="thumbnail">';
                 if(response[2].article_type=='p'){
-                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[2].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'   
+                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[2].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[2].name+'</a></div>'   
                 }
                 else{
-                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[2].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'
+                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[2].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[2].name+'</a></div>'
 
                 }
                 a_3 = '<span style="float:right; font-weight:bold;font-size:20px">主菜</span>';
 
 
-            $('#random_food_3').hide().html(a_1+a_2+a_3).fadeIn();
+            $('#random_food_3').hide().html(a_1+a_2).fadeIn();
 
                 a_1 = '<a href="tasks/'+response[3].id+'" class="thumbnail">';
                 if(response[3].article_type=='p'){
-                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[3].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'   
+                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+nowurl+'foodpic-upload/'+response[3].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[3].name+'</a></div>'   
                 }
                 else{
-                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[3].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;"></a></div>'
+                a_2 = '<img data-src="holder.js/100%x180" alt="100%x180" src="'+response[3].img_url+'" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">'+response[3].name+'</a></div>'
 
                 }
                 a_3 = '<span style="float:right; font-weight:bold;font-size:20px">甜點</span>';
 
 
-            $('#random_food_4').hide().html(a_1+a_2+a_3).fadeIn();
+            $('#random_food_4').hide().html(a_1+a_2).fadeIn();
         })
 
 });

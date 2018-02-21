@@ -27,13 +27,13 @@ class CmsSchoolController extends Controller
      */
     public function index()
     {
-        $schools =School::where('enable','=','0')->get();
+        $schools =School::where('enable','=','0')->orderBy('created_at', 'desc')->get();
         return view('cms/school.indexdeny')->withSchools($schools);
     }
 
     public function index_agree()
     {
-        $schools =School::where('enable','=','1')->get();
+        $schools =School::where('enable','=','1')->orderBy('created_at', 'desc')->get();
         return view('cms/school.indexagree')->withSchools($schools);
     }
 

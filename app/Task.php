@@ -6,7 +6,8 @@ use App\Ingredient;
 use App\User;
 use App\Comment;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Task extends Model
 {
     /**
@@ -14,6 +15,7 @@ class Task extends Model
      *
      * @var array
      */
+    use SoftDeletes;
     protected $dates = ['deleted_at'];
 
     protected $fillable = ['name','article_type','cooktime','portion','shortintro','tip','img_url','ingridients[]','quantity[]','intro[]','style_1','style_2','style_3','popular'];
@@ -26,7 +28,9 @@ class Task extends Model
     protected $casts = [
         'user_id' => 'int',
     ];
+    
 
+    
     /**
      * Get the user that owns the task.
      */

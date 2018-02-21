@@ -250,7 +250,10 @@
                 }
             },
         });
+        $('input[name=content]').val('');
+        $('#content').val('');
         $('#name').val('');
+
     });
     $('.modal-footer').on('click', '.delete', function() {
         $.ajax({

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Cms_logo;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -14,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $logo = Cms_logo::orderBy('created_at','desc')->take(1)->get();
+    /*dd($logo);*/
+        view()->share('logo', $logo);
     }
 
     /**

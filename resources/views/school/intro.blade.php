@@ -90,8 +90,8 @@
 				<a style="color:white" href="{{ URL::asset('member/').'/'.$schools[0]->user->id}}">
 				<div class="col-md-8" style="text-align: end;">
 					<div>{{$schools[0]->user->name}}</div>
-					<div>料理<span>8</span>/收藏<span>20</span>/</div>
-					<div>追蹤<span>30</span>/粉絲<span>100</span>/</div>
+					<div>料理<span>{{count($schools[0]->user->tasks)}}</span>/收藏<span>{{count($schools[0]->user->collecttask)}}</span>/</div>
+          			<div>追蹤<span>{{count($schools[0]->user->follows)}}</span>/粉絲<span>{{count($schools[0]->user->follower)}}</span>/</div>
 
 				</div>
 				<div class="col-md-4">
@@ -109,7 +109,7 @@
                     <h4>留言:</h4>
                     <form action='schoolcomment' id="schoolcomment" method='POST'>
                     <input type="hidden" name="task_id" value= "{{$schools[0]->id}}">
-
+                    <input type="hidden" name="user_id" value= "{{$schools[0]->user_id}}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <textarea name="comment" class="form-control" rows="3"></textarea>

@@ -15,6 +15,9 @@ use App\Comment;
 use App\Recommand;
 use App\School;
 use App\Announce;
+use App\Season;
+use App\Cms_logo;
+use App\Contact;
 
 use Auth;
 use DB;
@@ -112,4 +115,45 @@ class CmsController extends Controller
 
         return view('cms/statistic.index'); 
     }
+    public function changelogopage(){
+
+        $logo =Cms_logo::orderBy('created_at', 'desc')->get();
+        /*->take(1)*/
+        return view('cms/changelogo.index')->with('logo',$logo);
+    }
+    public function logochangepic(Request $request){
+
+    $logo = new Cms_logo;
+    $file = $request->file('logo_pic');
+    $extension = $file->getClientOriginalExtension();
+    $file_name = strval(time()).str_random(5).'.'.$extension;
+
+    $destination_path = public_path().'/logo-upload/';
+    $logo->img = $file_name;
+    $logo->save();
+
+    if ($request->hasFile('logo_pic')) {
+        $upload_success = $file->move($destination_path, $file_name);
+    }   
+    $logo = Cms_logo::orderBy('created_at','desc')->take(1)->get();
+    return view('cms/changelogo.index')->with('logo',$logo);
+    }
+    public function storeContact(Request $request){
+    $contact = new Contact;
+    $contact->identity = $request ->identity;
+    $contact->header = $request ->header;
+    $contact->content = $request ->content;
+    $contact->name = $request ->name;
+    $contact->mail = $request->mail;
+    $contact->save();
+    return response ()->json ();
+    }
+
+    public function viewcontactpage(){
+
+        $contact =Contact::orderBy('created_at', 'desc')->get();
+        /*->take(1)*/
+        return view('cms/contact.index')->with('contacts',$contact);
+    }
+
 }

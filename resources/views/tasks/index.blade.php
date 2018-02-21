@@ -9,12 +9,13 @@
 
 <div class="container" style="text-align: center;">
 	<h2>料理總覽</h2>
-<ol id="filters">
+<ol id="filters" >
     <ul style="display: flex;">
       <li  data-filter="早餐" class="btn filters_1" style="margin-left:5px;">早餐</li>
       <li  data-filter="午餐" class="btn filters_1">午餐</li>
-      <li  data-filter="點心" class="btn filters_1">點心</li>
       <li  data-filter="晚餐" class="btn filters_1">晚餐</li>
+      <li  data-filter="點心" class="btn filters_1">點心</li>
+      
     </ul>
 
     <ul style="display: flex;">
@@ -35,6 +36,7 @@
       <li  data-filter="羹湯" class="btn filters_3" style="margin-left:5px;">羹湯</li>
       <li  data-filter="乾果與水果" class="btn filters_3" style="margin-left:5px;">乾果與水果</li>
       <li  data-filter="醬料製作" class="btn filters_3" style="margin-left:5px;">醬料製作</li>
+      <li  data-filter="其他" class="btn filters_3" style="margin-left:5px;">其他</li>
 
       </ul>
       
@@ -46,6 +48,7 @@
 
           <span class="input-group-btn">
             <button type="submit" class="btn btn-default" type="button">依名稱搜尋</button>
+            <button type="submit" class="btn btn-default" type="button">重新搜尋</button>
           </span>
         </div>
         </form>
@@ -112,7 +115,7 @@
                     <!--<div id="myTabContent" class="tab-content"style="margin-top:30px"id="food_index_catorgory">
                         <div role="tabpanel" class="tab-pane fade row" id="breakfirst" aria-labelledby="breakfirst-tab">-->
                             @foreach ($tasks as $task)
-                            <li class="col-md-3" data-filter-class=["{{$task->style_1}}","{{$task->style_2}}","{{$task->style_3}}"]>
+                            <li class="col-md-3 food-block" data-filter-class=["{{$task->style_1}}","{{$task->style_2}}","{{$task->style_3}}"]>
                                 <a href="tasks/{{ $task-> id }}" class="thumbnail">
                                     @if($task->article_type=='p')
                                 <img data-src="{{ $task->img_url }}"  src="<?php echo url('foodpic-upload')?>/{{$task->img_url}}" data-holder-rendered="true" style="display: block;">

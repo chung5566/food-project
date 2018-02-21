@@ -14,6 +14,7 @@ use App\Collect;
 use App\Comment;
 use App\Recommand;
 use App\School;
+use App\Season;
 use Auth;
 use DB;
 
@@ -27,8 +28,15 @@ class CmsTaskController extends Controller
     public function index()
     {
 
-        $tasks = Task::get();
-        return view('cms/task.index')->withTasks($tasks);
+        $ss = Season::get();
+        $q=array();
+        foreach ($ss as $key => $value) {
+        array_push($q, $value->task_id);
+        }
+        $seasons = Task::whereIn('id',$q)->get();
+        
+        $tasks = Task::whereNotIn('id',$q)->orderBy('created_at', 'desc')->get();
+        return view('cms/task.index')->withTasks($tasks)->withSeasons($seasons);
     }
 
     /**
@@ -103,5 +111,28 @@ class CmsTaskController extends Controller
         Comment::find ( $request->id )->delete ();
         return response ()->json ();
 
+    }
+    public function recommand_food(Request $request){
+        $user = Auth::user();
+
+        if($request->has("recommand_food")){
+ 
+            $recommand_id=$request->recommand_food;
+            if(Season::where("task_id",$recommand_id)->count()>0){
+
+                Season::where("task_id",$recommand_id)->delete();
+                return response()->json(array("result"=>"1","isunlike"=>"0","text"=>"推薦"));
+            }
+            else{
+                $like=new Season();
+                $like->task_id=$request->recommand_food;
+                $like->save();
+            return response()->json(array("result"=>"1","isunlike"=>"1","text"=>"取消推薦"));
+            }
+            return response()->json(array("result"=>"1","isunlike"=>"1","text"=>"取消推薦"));
+        }
+        else{
+            return response()->json(array("result"=>"0"));
+        }
     }
 }

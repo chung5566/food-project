@@ -31,8 +31,17 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/lib/animate.css/animate.css')}}">
 
 
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.5/fullcalendar.min.css">
-
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.5/fullcalendar.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('dist/css/parsley.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('dist/css/ladda.min.css')}}">
+    
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="{{ URL::asset('dist/js/main.js')}}"></script>
+    <script type="text/javascript" src="{{ URL::asset('dist/js/parsley.js')}}"></script>
+    <script type="text/javascript" src="{{ URL::asset('dist/js/zh_tw.js')}}"></script>
+    <script type="text/javascript" src="{{ URL::asset('dist/js/ajax.js')}}"></script>
+    <script type="text/javascript" src="{{ URL::asset('dist/js/spin.min.js')}}"></script>
+    <script type="text/javascript" src="{{ URL::asset('dist/js/ladda.min.js')}}"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -158,20 +167,20 @@
                                   <li class="nav-header">Menu</li>
                                   <li class="nav-divider"></li>
                                   <li class="">
-                                    <a href="dashboard.html">
-                                      <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;Dashboard</span>
+                                    <a href="{{url('cms/changelogo')}}">
+                                      <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;更換Logo</span>
                                     </a>
                                   </li>
                                   <li class="">
                                     <a href="javascript:;">
                                       <i class="fa fa-building "></i>
-                                      <span class="link-title">Layouts</span>
+                                      <span class="link-title">功能表</span>
                                       <span class="fa arrow"></span>
                                     </a>
                                     <ul class="collapse">
                                       <li>
-                                        <a href="boxed.html">
-                                          <i class="fa fa-angle-right"></i>&nbsp; Boxed Layout </a>
+                                        <a href="{{url('cms/contact')}}">
+                                          <i class="fa fa-angle-right"></i>&nbsp; 聯絡我們 </a>
                                       </li>
                                       <li>
                                         <a href="fixed-header-boxed.html">

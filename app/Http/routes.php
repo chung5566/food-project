@@ -24,13 +24,14 @@
 
 Route::group(['middleware' => ['web']], function () {
 	Route::auth();
+
     Route::get('/', 'indexController@index');
 
     /*Route::get('/food_index', function () {
         return view('food/index');
     });*/
     
-  
+    Route::post('contact','CmsController@storeContact');
     Route::get('/self_set', [
         'middleware' => 'auth',
         'uses' => 'userController@index',
@@ -63,6 +64,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('userchange','userController@userchange');
     Route::post('userchangepic','userController@userchangepic');
     Route::post('userchangeintro','userController@userchangeintro');
+    Route::post('changepassword','userController@changepassword');
     Route::post('tasks/collect','CollectController@collect');
     Route::post('tasks/recommand','RecommandController@food_recommand');
     Route::post('selectstyle','indexController@selectstyle');
@@ -84,6 +86,21 @@ Route::post('school/joinschool',['middleware' => 'auth',
 Route::post('tasks/foodcomment', ['middleware' => 'auth', 
         'uses' =>'CommentController@foodcomment',
 ]);
+Route::get('tasks/foodcomment/{id}', ['middleware' => 'auth', 
+        'uses' =>'TaskController@show',
+]);
+####實在好文
+    Route::get('/article','ArticleController@index');
+    Route::get('/article/addArticle','ArticleController@create');
+
+####實在好物
+    Route::resource('product','ProductController');
+    Route::get('/product','ProductController@index');
+    Route::get('/product/addProduct', ['middleware' => 'auth', 
+        'uses' =>'ProductController@create',
+]);
+    Route::post('store_product','ProductController@store');
+
    # Route::post('tasks/foodcomment','CommentController@foodcomment');
     Route::get('cms','CmsController@index');
     Route::get('cms/statistic','CmsController@statistic');
@@ -98,6 +115,7 @@ Route::post('tasks/foodcomment', ['middleware' => 'auth',
     Route::resource('cms/cms_task','CmsTaskController');
     Route::post('cms/cms_taskdelete','CmsTaskController@destroy');
     Route::post('cms/cms_commentdelete','CmsTaskController@destroycomment');
+    Route::post('cms/recommand_food','CmsTaskController@recommand_food');
 
     Route::resource('cms/cms_school_deny','CmsSchoolController');
     Route::get('cms/cms_school_agree','CmsSchoolController@index_agree');
@@ -107,4 +125,12 @@ Route::post('tasks/foodcomment', ['middleware' => 'auth',
     Route::post('cms/cmsSchooldeletedeny','CmsSchoolController@destroydeny');
     Route::post('checked','indexController@checked');
 	Route::post('cms/cms_member/mailtomember','CmsMemberController@mailtomember');
+    
+    Route::get('cms/changelogo','CmsController@changelogopage');
+    Route::post('cms/logochangepic','CmsController@logochangepic');
+    Route::get('cms/contact','CmsController@viewcontactpage');
+    //Password Reset
+    Route::get('password/reset/{token?}','Auth\PasswordController@showResetForm');
+    Route::post('password/email','Auth\PasswordController@sendResetLinkEmail');
+    Route::post('password/reset','Auth\PasswordController@reset');
 });

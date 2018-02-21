@@ -25,83 +25,93 @@
                 <div class="row" style="margin:20px 60px 10px 60px;">
             <label class="small" style="float:left,">複選</label>
             <div class="btn-group" data-toggle="buttons">
+                <!--@foreach($style1 as $s)
+                {{$s}}
+                @endforeach-->
 
-                <label class="btn btn-primary @if ('早餐'== $task->style_1) active @endif">
-                    <input type="checkbox" name="style_1" id="option1" autocomplete="off" value="早餐" @if ('早餐'== $task->style_1) checked="checked" @endif> 早餐
+                
+                <label class="btn btn-primary @foreach($style1 as $s) @if($s =="早餐") active @endif @endforeach">
+                    <input type="checkbox" name="style_1[]" id="option1" autocomplete="off" value="早餐"@foreach($style1 as $s)  @if($s =="早餐")  checked="checked" @endif @endforeach> 早餐
                 </label>
-                <label class="btn btn-primary @if ('午餐'== $task->style_1) active @endif">
-                    <input type="checkbox" name="style_1" id="option2" autocomplete="off" value="午餐" @if ('午餐'== $task->style_1) checked="checked" @endif> 午餐
+                
+                <label class="btn btn-primary @foreach($style1 as $s) @if($s =="午餐") active @endif @endforeach">
+                    <input type="checkbox" name="style_1[]" id="option1" autocomplete="off" value="午餐"@foreach($style1 as $s)  @if($s =="午餐")  checked="checked" @endif @endforeach> 午餐
                 </label>
-                <label class="btn btn-primary @if ('晚餐'== $task->style_1) active @endif">
-                    <input type="checkbox" name="style_1" id="option3" autocomplete="off" value="晚餐" @if ('晚餐'== $task->style_1) checked="checked" @endif> 晚餐
+                <label class="btn btn-primary @foreach($style1 as $s) @if($s =="晚餐") active @endif @endforeach">
+                    <input type="checkbox" name="style_1[]" id="option1" autocomplete="off" value="晚餐"@foreach($style1 as $s)  @if($s =="晚餐")  checked="checked" @endif @endforeach> 晚餐
+                </label>
+                <label class="btn btn-primary @foreach($style1 as $s) @if($s =="點心") active @endif @endforeach">
+                    <input type="checkbox" name="style_1[]" id="option1" autocomplete="off" value="點心"@foreach($style1 as $s)  @if($s =="點心")  checked="checked" @endif @endforeach> 點心
                 </label>
             </div>
         </div>
         <div class="row" style="margin:20px 60px 10px 60px;">
             <label class="small" style="float:left,">複選</label>
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary @if ('中式料理'== $task->style_2) active @endif">
-                    <input type="checkbox" name="style_2" id="option1" autocomplete="off" value="中式料理" @if ('中式料理'== $task->style_2) checked="checked" @endif> 中式料理
+                <label class="btn btn-primary @foreach($style2 as $s) @if($s =="中式料理") active @endif @endforeach">
+                    <input type="checkbox" name="style_2[]" id="option1" autocomplete="off" value="中式料理"@foreach($style2 as $s)  @if($s =="中式料理")  checked="checked" @endif @endforeach> 中式料理
                 </label>
-                <label class="btn btn-primary  @if ('亞洲料理'== $task->style_2) active @endif">
-                    <input type="checkbox" name="style_2" id="option2" autocomplete="off" value="亞洲料理" @if ('亞洲料理'== $task->style_2) checked="checked" @endif> 亞洲料理
+                <label class="btn btn-primary @foreach($style2 as $s) @if($s =="亞洲料理") active @endif @endforeach">
+                    <input type="checkbox" name="style_2[]" id="option1" autocomplete="off" value="亞洲料理"@foreach($style2 as $s)  @if($s =="亞洲料理")  checked="checked" @endif @endforeach> 亞洲料理
                 </label>
-                <label class="btn btn-primary  @if ('歐美澳洲料理'== $task->style_2) active @endif">
-                    <input type="checkbox" name="style_2" id="option3" autocomplete="off" value="歐美澳洲料理" @if ('歐美澳洲料理'== $task->style_2) checked="checked" @endif> 歐美澳洲料理
+                <label class="btn btn-primary @foreach($style2 as $s) @if($s =="歐美澳洲料理") active @endif @endforeach">
+                    <input type="checkbox" name="style_2[]" id="option1" autocomplete="off" value="歐美澳洲料理"@foreach($style2 as $s)  @if($s =="歐美澳洲料理")  checked="checked" @endif @endforeach> 歐美澳洲料理
                 </label>
-                <label class="btn btn-primary @if ('異國料理料理'== $task->style_2) active @endif">
-                    <input type="checkbox" name="style_2" id="option4" autocomplete="off" value="異國料理" @if ('異國料理'== $task->style_2) checked="checked" @endif> 異國料理
+                <label class="btn btn-primary @foreach($style2 as $s) @if($s =="異國料理") active @endif @endforeach">
+                    <input type="checkbox" name="style_2[]" id="option1" autocomplete="off" value="異國料理"@foreach($style2 as $s)  @if($s =="異國料理")  checked="checked" @endif @endforeach> 異國料理
                 </label>
-                <label class="btn btn-primary @if ('懶人料理料理'== $task->style_2) active @endif">
-                    <input type="checkbox" name="style_2" id="option5" autocomplete="off" value="懶人料理" @if ('懶人料理'== $task->style_2) checked="checked" @endif> 懶人料理
+                <label class="btn btn-primary @foreach($style2 as $s) @if($s =="懶人料理") active @endif @endforeach">
+                    <input type="checkbox" name="style_2[]" id="option1" autocomplete="off" value="懶人料理"@foreach($style2 as $s)  @if($s =="懶人料理")  checked="checked" @endif @endforeach> 懶人料理
                 </label>
-                <label class="btn btn-primary @if ('創意料理料理'== $task->style_2) active @endif">
-                    <input type="checkbox" name="style_2" id="option6" autocomplete="off" value="創意料理" @if ('創意料理'== $task->style_2) checked="checked" @endif> 創意料理
+                <label class="btn btn-primary @foreach($style2 as $s) @if($s =="創意料理") active @endif @endforeach">
+                    <input type="checkbox" name="style_2[]" id="option1" autocomplete="off" value="創意料理"@foreach($style2 as $s)  @if($s =="創意料理")  checked="checked" @endif @endforeach> 創意料理
                 </label>
-                <label class="btn btn-primary @if ('養生料理料理'== $task->style_2) active @endif">
-                    <input type="checkbox" name="style_2" id="option7" autocomplete="off" value="養生料理" @if ('養生料理'== $task->style_2) checked="checked" @endif> 養生料理
+                <label class="btn btn-primary @foreach($style2 as $s) @if($s =="養生料理") active @endif @endforeach">
+                    <input type="checkbox" name="style_2[]" id="option1" autocomplete="off" value="養生料理"@foreach($style2 as $s)  @if($s =="養生料理")  checked="checked" @endif @endforeach> 養生料理
                 </label>
             </div>
         </div>
         <div class="row" style="margin:20px 60px 10px 60px;">
             <label class="small" style="float:left,">單選</label>
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary @if ('素食料理'== $task->style_3) active @endif">
-                    <input type="radio" name="style_3" id="option1" autocomplete="off" value="素食" @if ('素食'== $task->style_3) checked="checked" @endif> 素食
+                <label class="btn btn-primary @foreach($style3 as $s) @if($s =="素食") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="素食"@foreach($style3 as $s)  @if($s =="素食")  checked="checked" @endif @endforeach> 素食
                 </label>
-                <label class="btn btn-primary @if ('非素食'== $task->style_3) active @endif">
-                    <input type="radio" name="style_3" id="option2" autocomplete="off" value="非素食" @if ('非素食'== $task->style_3) checked="checked" @endif> 非素食
+                <label class="btn btn-primary @foreach($style3 as $s) @if($s =="非素食") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="非素食"@foreach($style3 as $s)  @if($s =="非素食")  checked="checked" @endif @endforeach> 非素食
                 </label>
-                <label class="btn btn-primary @if ('純肉'== $task->style_3) active @endif">
-                    <input type="radio" name="style_3" id="option3" autocomplete="off" value="純肉" @if ('純肉'== $task->style_3) checked="checked" @endif> 純肉
+                <label class="btn btn-primary @foreach($style3 as $s) @if($s =="純肉") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="純肉"@foreach($style3 as $s)  @if($s =="純肉")  checked="checked" @endif @endforeach> 純肉
                 </label>
-                <label class="btn btn-primary @if ('海鮮'== $task->style_3) active @endif">
-                    <input type="radio" name="style_3" id="option4" autocomplete="off" value="海鮮" @if ('海鮮'== $task->style_3) checked="checked" @endif> 海鮮
+                <label class="btn btn-primary @foreach($style3 as $s) @if($s =="海鮮") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="海鮮"@foreach($style3 as $s)  @if($s =="海鮮")  checked="checked" @endif @endforeach> 海鮮
                 </label>
-                <label class="btn btn-primary @if ('米麵澱粉類主食'== $task->style_3) active @endif">
-                    <input type="radio" name="style_3" id="option5" autocomplete="off" value="米麵澱粉類主食" @if ('海鮮'== $task->style_3) checked="checked" @endif> 米麵澱粉類主食
+                <label class="btn btn-primary @foreach($style3 as $s) @if($s =="米麵澱粉類主食") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="米麵澱粉類主食"@foreach($style3 as $s)  @if($s =="米麵澱粉類主食")  checked="checked" @endif @endforeach> 米麵澱粉類主食
                 </label>
-                <label class="btn btn-primary @if ('乾果與水果'== $task->style_3) active @endif">
-                    <input type="radio" name="style_3" id="option6" autocomplete="off" value="乾果與水果" @if ('乾果與水果'== $task->style_3) checked="checked" @endif> 乾果與水果
+                <label class="btn btn-primary @foreach($style3 as $s) @if($s =="羹湯") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="羹湯"@foreach($style3 as $s)  @if($s =="羹湯")  checked="checked" @endif @endforeach> 羹湯
                 </label>
-                <label class="btn btn-primary @if ('醬料製作'== $task->style_3) active @endif">
-                    <input type="radio" name="style_3" id="option7" autocomplete="off" value="醬料製作" @if ('醬料製作'== $task->style_3) checked="checked" @endif> 醬料製作
+                <label class="btn btn-primary @foreach($style3 as $s) @if($s =="乾果與水果") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="乾果與水果"@foreach($style3 as $s)  @if($s =="乾果與水果")  checked="checked" @endif @endforeach> 乾果與水果
                 </label>
-                 <label class="btn btn-primary @if ('其他'== $task->style_3) active @endif">
-                    <input type="radio" name="style_3" id="option8" autocomplete="off" value="其他" @if ('其他'== $task->style_3) checked="checked" @endif> 其他
+                <label class="btn btn-primary @foreach($style3 as $s) @if($s =="醬料製作") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="醬料製作"@foreach($style3 as $s)  @if($s =="醬料製作")  checked="checked" @endif @endforeach> 醬料製作
+                </label>
+                 <label class="btn btn-primary @foreach($style3 as $s) @if($s =="其他") active @endif @endforeach">
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="其他"@foreach($style3 as $s)  @if($s =="其他")  checked="checked" @endif @endforeach> 其他
                 </label>
             </div>
         </div>
         <div class="row" style="border:2px solid #000033;margin: 20px 60px 10px 40px;">
-            <div class="form-group">
-                <label for="inputFoodname" class="col-sm-2 control-label" style="margin-top: 5px;">料理名稱 :
-                    <!--Email-->
-                </label>
-                <div class="col-sm-10">
-                    <input name="name" type="text" class="form-control" id="inputFoodname" placeholder="" value="{{$task->name}}" style="background: transparent;border:none;color:#000033;    font-weight: bold;" required>
-                </div>
-            </div>
+
+<div class="form-group">
+        <label for="inputFoodname" class="col-sm-2 control-label" style="margin-top: 5px;"required>料理名稱 :<!--Email--></label>
+        <div class="col-sm-10">
+          <input name="name" type="text" class="form-control" id="inputFoodname" placeholder="" style="background: transparent;border:none;color:#000033;    font-weight: bold;" value="{{$task->name}}" required>
         </div>
+        </div>
+      </div>
         <div class="row" style="margin:0px 60px 50px 40px;">
             <input id="main-pic" name="food_pic" type='file' class="upl uplll"  onchange="validate_fileupload(this.value);"  >
             <div class="col-md-6" style="padding:0px">
@@ -152,7 +162,7 @@
             <div class="col-md-5">
                 <!-- 4:3 aspect ratio -->
                 @if($step->img_url)
-                        <img data-src="holder.js/100%x200" alt="100%x200" style="height:300px;
+                        <img data-src="holder.js/100%x200" alt="100%x200" style="height:300px;width:100%;
                          display: block;" src="{{URL::asset('step-upload').'/'.$step->img_url}}" data-holder-rendered="true">
                        @else
                                        <img src="" class="" style="width: 400px; height: 300px;">
@@ -180,7 +190,7 @@
     <input name="task_type" type="hidden" value="p">
     <div class="container" style="margin-top:50px;    text-align: -webkit-center;">
         <button type="submit" class="btn blue-btn" style="">發布</button>
-        <a href="{{url('tasks')}}" class="btn blue-btn">取消</a>
+        <a href="{{URL::asset('tasks').'/'.$task->id}}" class="btn blue-btn">取消</a>
     </div>
     </div>
 </form>

@@ -1,4 +1,4 @@
-/*å°Žè¦½åˆ—*/
+/*å° ¦½  /
 a{color: black}
 
 .text-center{
@@ -65,7 +65,113 @@ padding:0px;
 
 }
 }
-/*å°Žè¦½åˆ—end*/
+/*å° ¦½  nd*/
+a{color: black}
+body{
+	background:#fcf8e3!important
+}
+
+#navtop{
+ background: red;
+}
+@media (max-width: 769px){
+#navtop{
+ position:fixed;
+}
+
+}
+@media (min-width: 770px){
+
+#navbutton{
+	display: none!important;
+}
+}
+
+#mynavbar a{
+	color:white;
+}
+@media (max-width: 769px){
+#bs-example-navbar-collapse-1{
+background:orange;
+}
+#___gcse_0{
+	background: orange!important;
+}
+.gsc-control-cse{
+	background: orange!important;
+}
+}
+
+#addFood{
+	border-radius: 100px;
+	background: #00bfff;
+	right: 0px;
+    position: absolute;
+	margin-top: 8%;
+	float: right;
+	z-index: 1000;
+	color:black; 
+	padding: 10px 14px;
+	font-size:20px;
+	/*border: solid 2px white;*/
+
+}
+
+#addSchool{
+	border-radius: 0px;
+	background: #000033;
+	right: 10px;
+    position: absolute;
+	margin-top: 8%;
+	float: right;
+	z-index: 1000;
+	color:white; 
+	padding: 10px 14px;
+	font-size:20px;
+	/*border: solid 2px white;*/
+
+}
+
+.speech-bubble:hover{
+	outline:none;
+
+}
+
+.speech-bubble {
+   right:0px;
+   position: absolute;
+   width: 120px;
+   height: 40px;
+   bottom: 10px;
+   color: white;
+   text-align: center;
+   padding: 0px;
+   background: green;
+   border-radius: 53px;
+   font-size: x-large;
+   font-weight: bolder
+}
+
+.speech-bubble:after {
+   content: '';
+   position: absolute;
+   border-style: solid;
+   border-width: 13px 12px 0;
+   border-color: green transparent;
+   display: block;
+   width: 0;
+   z-index: 1;
+   bottom: -13px;
+   left: 18px;
+
+}
+
+
+@media (max-width: 1000px){
+.container{
+	width:1000px;
+	}
+}
 
 #addFood:active{
 	border: solid 2px white;
@@ -86,17 +192,16 @@ padding-right: 30px;
 margin-top: 55px;
 
 }
-
+.index-select-food{
+	border-color: rgba(128, 36, 36, 0)!important;
+	font-weight: bolder;
+}
 #select-food-style > .btn{
 
 	margin:10px 0px;
 }
 
-@media screen and (max-width: 992px) {
-#select-food-style > .btn{
-	margin:10px 10px;
-}
-}
+
 #select-food-time > .btn{
 	margin:10px 10px;
 }
@@ -137,6 +242,7 @@ cursor: pointer;
 }
 #ramdom-food-create:active{
 	background:#d58512
+	color:white;
 }
 
 .main-food-display{
@@ -201,28 +307,82 @@ footer{
 
 /*new*/
 .foodblock{
-	font-size: 2em;
+	font-size: 1em;
     font-weight: bold;
     text-align: center;
+
     
 }
 .foodblock > a{
+	    overflow: hidden;
+	white-space: nowrap;
+text-overflow: ellipsis;
 	color:#555!important;
 }
 
 #rank_board{
-	border: 3px solid #000033;
+	/*border: 3px solid #000033;*/
 }
 
 .rank_board_item{
 	padding-top: 5px;
 	padding-bottom: 5px;
-	margin: 5px 5px 0px 5px;
+	/*margin: 5px 5px 0px 5px;*/
 	border-bottom: 2px solid #000033;
 }
+.rank_board_item.row:nth-child(1){
+	border-top: purple 3px solid;
+	border-right:orange 3px solid;
+	border-left:orange 3px solid; 
+}
+.rank_board_item.row:nth-child(2){
+	border-right:orange 3px solid;
+	border-left:orange 3px solid; 
+}
+.rank_board_item.row:nth-child(3){
+	border-right:green 3px solid;
+	border-left:blue 3px solid; 
+}
+.rank_board_item.row:nth-child(4){
+	border-right:green 3px solid;
+	border-left:blue 3px solid; 
+}
+.rank_board_item.row:nth-child(5){
+	border-right:red 3px solid;
+	border-left:yellow 3px solid; 
+}
+.rank_board_item.row:nth-child(6){
+	border-right:red 3px solid;
+	border-left:yellow 3px solid; 
+}
+.rank_board_item.row:nth-child(7){
+	border-right:yellow 3px solid;
+	border-left:red 3px solid; 
+}
+.rank_board_item.row:nth-child(8){
+	border-right:yellow 3px solid;
+	border-left:red 3px solid; 
+}
+.rank_board_item.row:nth-child(9){
+	border-right:blue 3px solid;
+	border-left:green 3px solid; 
+}
+.rank_board_item.row:nth-child(10){
+	border-right:blue 3px solid;
+	border-left:green 3px solid; 
+}
+.rank_board_item.row:nth-child(11){
+	border-right:orange 3px solid;
+	border-left:orange 3px solid; 
+}
+.rank_board_item.row:nth-child(12){
+	border-right:orange 3px solid;
+	border-left:orange 3px solid; 
+}
 
-.rank_board_item:last-child{
-	border-bottom: none;
+
+.rank_board_item.row:last-child{
+	border-bottom: purple 3px solid;
 }
 .rank_board_item_name{
 	padding: 0px;
@@ -260,15 +420,28 @@ footer{
 
 #random_button{
 	    margin-right: 100px;
-    float: right;
-    margin-top: 40px;
+    
+    
 
 }
 #random_button > .btn{
 	border: solid 2px #000033;
 	margin: 0px 10px 0px 10px;
+	
+}
+#try_again_random_food{
+	background: #000033!important;
+	color:white;
 }
 
+#try_again_random_food:hover{
+	background: #000033!important;
+	color:white;
+}
+#try_again_random_food:focus{
+	background: #000033!important;
+	color:white;
+}
 #random_food{
 	margin: 50px 10px 50px 10px;
 }
@@ -350,22 +523,22 @@ footer{
 .bold{
 	font-weight: bold;
 }
-
-#food_asemble_choose > div >.btn{
+#food_asemble_choose > div> div >.active{
+background: #000033!important;
+    color:#99bbff!important ;
+};
+#food_asemble_choose > div > div >.btn{
 	background: #99bbff;
     border: none;
-    color: #0000cc;
+    /*color: #0000cc;*/
     border-radius: 10px;
     margin: 1px 2px;
 }
-#food_asemble_choose > div >.btn:hover{
+#food_asemble_choose >div >div >.btn:hover{
 	border:none;
 	outline: none;
-};
-#food_asemble_choose > div >.btn .active{
-background: #0000cc;
-    color:#99bbff ;
-};
+}
+
 
 #cse {
     width: 60%; /* make sure you don't use inline width */
@@ -376,8 +549,17 @@ background: #0000cc;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
-#___gcse_0{display:inline-block;
+#___gcse_0{
+	/*background: red!important;*/
+	display:inline-block;
     position: relative;
     display: inline-block;
     width: 200px;
+}
+.gsc-control-cse{
+	border: none!important;
+	background: inherit!important;
+}
+.gsib_a{
+	padding: 0px!important;
 }

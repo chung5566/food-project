@@ -25,13 +25,16 @@
             <div class="btn-group" data-toggle="buttons">
 
                 <label class="btn btn-primary active">
-                    <input type="checkbox" name="style_1" id="option1" autocomplete="off" value="早餐" checked> 早餐
+                    <input type="checkbox" name="style_1[]" id="option1" autocomplete="off" value="早餐" checked> 早餐
                 </label>
                 <label class="btn btn-primary">
-                    <input type="checkbox" name="style_1" id="option2" autocomplete="off" value="午餐"> 午餐
+                    <input type="checkbox" name="style_1[]" id="option2" autocomplete="off" value="午餐"> 午餐
                 </label>
                 <label class="btn btn-primary">
-                    <input type="checkbox" name="style_1" id="option3" autocomplete="off" value="晚餐"> 晚餐
+                    <input type="checkbox" name="style_1[]" id="option3" autocomplete="off" value="晚餐"> 晚餐
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="style_1[]" id="option3" autocomplete="off" value="點心"> 點心
                 </label>
             </div>
         </div>
@@ -39,60 +42,63 @@
             <label class="small" style="float:left,">複選</label>
             <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                    <input type="checkbox" name="style_2" id="option1" autocomplete="off" value="中式料理" checked> 中式料理
+                    <input type="checkbox" name="style_2[]" id="option1" autocomplete="off" value="中式料理" checked> 中式料理
                 </label>
                 <label class="btn btn-primary">
-                    <input type="checkbox" name="style_2" id="option2" autocomplete="off" value="亞洲料理"> 亞洲料理
+                    <input type="checkbox" name="style_2[]" id="option2" autocomplete="off" value="亞洲料理"> 亞洲料理
                 </label>
                 <label class="btn btn-primary">
-                    <input type="checkbox" name="style_2" id="option3" autocomplete="off" value="歐美澳洲料理"> 歐美澳洲料理
+                    <input type="checkbox" name="style_2[]" id="option3" autocomplete="off" value="歐美澳洲料理"> 歐美澳洲料理
                 </label>
                 <label class="btn btn-primary">
-                    <input type="checkbox" name="style_2" id="option4" autocomplete="off" value="異國料理"> 異國料理
+                    <input type="checkbox" name="style_2[]" id="option4" autocomplete="off" value="異國料理"> 異國料理
                 </label>
                 <label class="btn btn-primary">
-                    <input type="checkbox" name="style_2" id="option5" autocomplete="off" value="懶人料理"> 懶人料理
+                    <input type="checkbox" name="style_2[]" id="option5" autocomplete="off" value="懶人料理"> 懶人料理
                 </label>
                 <label class="btn btn-primary">
-                    <input type="checkbox" name="style_2" id="option6" autocomplete="off" value="創意料理"> 創意料理
+                    <input type="checkbox" name="style_2[]" id="option6" autocomplete="off" value="創意料理"> 創意料理
                 </label>
                 <label class="btn btn-primary">
-                    <input type="checkbox" name="style_2" id="option7" autocomplete="off" value="養生料理"> 養生料理
+                    <input type="checkbox" name="style_2[]" id="option7" autocomplete="off" value="養生料理"> 養生料理
                 </label>
             </div>
         </div>
         <div class="row" style="margin:20px 60px 10px 60px;">
-            <label class="small" style="float:left,">單選</label>
+            <label class="small" style="float:left,">複選</label>
             <div class="btn-group" data-toggle="buttons">
                 <label class="btn btn-primary active">
-                    <input type="radio" name="style_3" id="option1" autocomplete="off" value="素食" checked> 素食
+                    <input type="checkbox" name="style_3[]" id="option1" autocomplete="off" value="素食" checked> 素食
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="style_3" id="option2" autocomplete="off" value="非素食"> 非素食
+                    <input type="checkbox" name="style_3[]" id="option2" autocomplete="off" value="非素食"> 非素食
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="style_3" id="option3" autocomplete="off" value="純肉"> 純肉
+                    <input type="checkbox" name="style_3[]" id="option3" autocomplete="off" value="純肉"> 純肉
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="style_3" id="option4" autocomplete="off" value="海鮮"> 海鮮
+                    <input type="checkbox" name="style_3[]" id="option4" autocomplete="off" value="海鮮"> 海鮮
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="style_3" id="option5" autocomplete="off" value="米麵澱粉類主食"> 米麵澱粉類主食
+                    <input type="checkbox" name="style_3[]" id="option5" autocomplete="off" value="米麵澱粉類主食"> 米麵澱粉類主食
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="style_3" id="option6" autocomplete="off" value="乾果與水果"> 乾果與水果
+                    <input type="checkbox" name="style_3[]" id="option5" autocomplete="off" value="羹湯"> 羹湯
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="style_3" id="option7" autocomplete="off" value="醬料製作"> 醬料製作
+                    <input type="checkbox" name="style_3[]" id="option6" autocomplete="off" value="乾果與水果"> 乾果與水果
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" name="style_3[]" id="option7" autocomplete="off" value="醬料製作"> 醬料製作
                 </label>
                  <label class="btn btn-primary">
-                    <input type="radio" name="style_3" id="option8" autocomplete="off" value="其他"> 其他
+                    <input type="checkbox" name="style_3[]" id="option8" autocomplete="off" value="其他"> 其他
                 </label>
             </div>
         </div>
         <div class="row" style="border:2px solid #000033;margin: 20px 60px 10px 40px;">
             <div class="form-group">
-                <label for="inputFoodname" class="col-sm-2 control-label" style="margin-top: 5px;text-align: right;">料理名稱 :
+                <label for="inputFoodname" class="col-sm-2 control-label" style="margin-top: 5px;text-align: right;padding-right:0px">料理名稱 :
                     <!--Email-->
                 </label>
                 <div class="col-sm-10">

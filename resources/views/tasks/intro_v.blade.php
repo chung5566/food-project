@@ -14,9 +14,8 @@
 			<span class="glyphicon glyphicon-eye-open" aria-hidden="true">{{$task->popular}} </span>
 			<span class="glyphicon glyphicon-heart" aria-hidden="true">{{count($collect)}}</span>
       <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">{{count($recommand)}}</span>
-@if ($user!='')
-      @if ($task->user->id != $user->id)
-
+      @if ((Auth::check()))
+      @if ($task->user->id!=$user->id)
       @if (count($recommand)===0)
       <a id="recommand" type="button" class="btn-success ladda-button btn-fix" data-token="{{ csrf_token() }}" style="margin-right:5px;margin-left:150px"><span class="glyphicon glyphicon glyphicon-thumbs-up" aria-hidden="true"></span><span class="ladda-label">喜歡</span></a>
       @else
@@ -28,9 +27,13 @@
       @else
       <a id="collect" type="button" class="btn-danger ladda-button btn-fix" data-token="{{ csrf_token() }}" style="margin-right:5px; "><span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="display:none"></span><span class="ladda-label">取消收藏</span></a>
       @endif
-      
+
+      @else
+      <a href="{{URL::asset('tasks').'/'.$task->id.'/delete'}}" type="button" class="btn-fix btn-danger" style="margin-right:5px;margin-left:150px;color:gray"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>刪除</a>
+      <a href="{{URL::asset('tasks').'/'.$task->id.'/edit'}}" type="button" class="btn-fix btn-success" style="margin-right:5px;color:gray"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>編輯</a>
       @endif
-      @endif  
+      @endif
+        
 			<!--<div class="btn-group" style="margin-bottom:4px">
         	<button class="ladda-button btn-fix dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
         		<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
@@ -46,14 +49,14 @@
 		</div>
 		<div class="well" id="member_index">
 			<div class="row">
-				<a href="{{ URL::asset('member/').'/'.$task->user->id}}">
-				<div class="col-md-8" style="text-align: end;">
+				<a class="task_user_inform" href="{{ URL::asset('member/').'/'.$task->user->id}}" >
+				<div class="col-md-8 col-xs-8" style="text-align: end;">
 					<div>{{$task->user->name}}</div>
-					<div>料理<span>8</span>/收藏<span>20</span>/</div>
-					<div>追蹤<span>30</span>/粉絲<span>100</span>/</div>
+					<div>料理<span>{{count($task->user->tasks)}}</span>/收藏<span>{{count($task->user->collecttask)}}</span>/</div>
+					<div>追蹤<span>{{count($task->user->follows)}}</span>/粉絲<span>{{count($task->user->follower)}}</span>/</div>
 
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 col-xs-4">
 				<img src="{{URL::asset('user-upload').'/'.$task->user->user_img}}" data-holder-rendered="true" style="height: 75px; width: 75px;margin-right:10px; display: block;">
 				</div>
 			</a>
@@ -65,23 +68,27 @@
 </div>
 <div class="well" style="width: 60%;margin: auto;margin-bottom: 20px;
 ">
+@if ($task->video_type != 'other')
 	<div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{$task->video_url}}" allowfullscreen=""></iframe>
+                            <iframe class="embed-responsive-item" src="//{{$task->video_url}}" allowfullscreen=""></iframe>
                         </div>
+@else 
+      {{$task->video_url}}
+@endif
 </div>
 <div class="row" style="    
     margin: 10px 25px;
     background: white;
         display: flex;
     ">
-	<div class="col-md-2" style="margin: 15px auto;text-align:center;    border-right: 2px solid black;">
+	<div class="col-md-2 col-xs-2" style="margin: 15px auto;text-align:center;    border-right: 2px solid black;">
 		<div style="margin:20px auto;"> 
 		<div>烹調時間</div>
 		
 		<div style="margin:10px auto;"><span style="font-size:40px;font-weight: bold;">{{$task->cooktime}}</span><br><span>mins</span></div>
 		</div>
 	</div>
-	<div class="col-md-5" style="margin: 15px auto;border-right: 2px solid black;">
+	<div class="col-md-5 col-xs-5" style="margin: 15px auto;border-right: 2px solid black;">
 	<div >食材:</div>
 					<ul style="margin-left:10px;">
 						@foreach($ingredients as $ingredient)
@@ -89,7 +96,7 @@
 						@endforeach
 					</ul>
 					</div>	
-	<div class="col-md-5" style="margin: 36px auto;">{{$task->shortintro}}</div>
+	<div class="col-md-5 col-xs-5" style="margin: 36px auto;">{{$task->shortintro}}</div>
 
 </div>
 
@@ -107,9 +114,10 @@
 <div class="container" style="margin-top:20px">
                 <div class="well">
                     <h4>留言:</h4>
+                    @if(Auth::check())
                     <form action="{{url('tasks/foodcomment')}}" id="foodcomment" method='POST'>
                     <input type="hidden" name="task_id" value= "{{$task->id}}">
-
+                    <input type="hidden" name="user_id" value= "{{$task->user->id}}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <textarea name="comment" class="form-control" rows="3"></textarea>
@@ -117,14 +125,17 @@
                         <button type="submit"id="foodcommentsubmit"  class="btn btn-primary">送出</button>
 
                     </form>
-                    
+                    @else
+                    <div>請先在此 <span><a style="color:white;background:#000033" href="{{ url('tasks/foodcomment/') }}/{{$task->id}}">點下登入</a><span> 以留言
+                    </div>
+                    @endif
                 </div>
                 <hr >
                 <div class="container">
                 @foreach ($comments as $comment)
                 <div class="media">
                 	<div class="row">
-                    <a class="pull-left" href="#"style="margin-right:10px">
+                    <a href="{{ URL::asset('member/').'/'.$comment->user->id}}" class="pull-left" href="#"style="margin-right:10px">
                         <img class="media-object" src="{{URL::asset('user-upload').'/'.$comment->user->user_img}}" alt=""width="100px" height="100px">
                     </a>
                     <div class="media-body">

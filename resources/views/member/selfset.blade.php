@@ -13,7 +13,7 @@
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">基本資料</a></li>
                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">頭像設置</a></li>
                     <li role="presentation"><a href="#selfintro" aria-controls="selfintro" role="tab" data-toggle="tab">自我介紹</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">密碼修改</a></li>
+                    <!--<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">密碼修改</a></li>-->
                 </ul>
                 <!-- Tab panes -->
             </div>
@@ -40,31 +40,57 @@
                             <label for="gender" class="col-sm-4 control-label">性別</label>
                             <div class="col-sm-6">
                                 <select class="form-control" name="gender" value="{{$user->gender}}">
-                                    <option disabled>請選擇</option>
+                                    <option >{{$user->gender}}</option>
                                     <option>男</option>
                                     <option>女</option>
+                                    <option>保密</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="dtp_input2" class="col-sm-4 control-label">生日</label>
-                            <div class="col-sm-6">
-                                <div class="input-group date form_date " data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                    <input name="birth" class="form-control" size="4" type="text" value="{{$user->birth}}" readonly="">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                </div>
+                                <label for="dtp_input2" class="col-sm-4 control-label">生日/birthday</label>
+                                <div class="col-md-6">
+                                <input type="text" class="form-control" name="birth" value="{{ $user->birth }}"placeholder="日期" data-toggle="tooltip"  title="ex.2016/09/30" required>
+
+                                @if ($errors->has('birth'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birth') }}</strong>
+                                    </span>
+                                @endif
                             </div>
-                            <input type="hidden" id="dtp_input2" value="{{$user->birth}}">
-                            <br>
-                        </div>
+                                                        <br>
+                                                    </div>
                         <div class="form-group">
-                            <label for="country" class="col-sm-4 control-label">區域</label>
-                            <div class="col-sm-6">
-                                <input name="country" type="text" id="country" value="{{$user->country}}">
-                                <input type="hidden" id="country_code" />
-                            </div>
-                        </div>
+                                                        <label for="country" class="col-sm-4 control-label">區域/country</label>
+                                                        <div class="col-sm-6">
+                                                            <select class="form-control" name="country">
+                                                              <option>{{$user->country}}</option>
+                                                              <option>台灣(北)</option>
+                                                              <option>台灣(中)</option>
+                                                              <option>台灣(南)</option>
+                                                              <option>台灣(東)</option>
+                                                              <option>中國 China</option>
+                                                              <option>香港，澳門</option>
+                                                              <option>日本 Japan</option>
+                                                              <option>韓國 Korea</option>
+                                                              <option>東南亞 Southeast Asia</option>
+                                                              <option>南亞 South Asia</option>
+                                                              <option>北亞 North Asia</option>
+                                                              <option>中亞 Central Asia</option>
+                                                              <option>西亞 West Asia</option>
+                                                              <option>東歐 Eastern Europe</option>
+                                                              <option>南歐 Southern Europe</option>
+                                                              <option>西歐 Western Europe</option>
+                                                              <option>北歐 Northern Europe</option>
+                                                              <option>中歐 Central Europe</option>
+                                                              <option>北美洲 North America</option>
+                                                              <option>中南美洲 Central and South America</option>
+                                                              <option>大洋洲 Oceania</option>
+                                                              <option>南北極 North and South Poles</option>
+                                                              <option>其他</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
                         <div class="form-group">
                             <div class="col-sm-offset-5 col-sm-10">
                                 <button type="submit" class="btn btn-default">送出</button>
@@ -73,13 +99,14 @@
                     </form>
                 </div>
                 <div role="tabpanel" class="tab-pane text-center" id="profile">
-                    <img class="preview" style="width: 500px; height: 400px;" src="{{URL::asset('user-upload').'/'.$user->user_img}}">
                     <form role="form" action="{{url('userchangepic')}}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="size"></div>
                         <div class="form-group">
                             <label for="exampleInputFile">檔案上傳</label>
                             <input name="user_pic" type='file' class="upl">
+                            <div><img class="preview" style="width: 500px; height: 400px;" src="{{URL::asset('user-upload').'/'.$user->user_img}}"></div>
+
                             <p class="help-block">上傳頭貼可以獲得積分喔</p>
                         </div>
                         <button type="submit" class="btn btn-default">送出</button>
@@ -95,16 +122,22 @@
                         <button type="submit" class="btn btn-default">送出</button>
                     </form>
                 </div>
+                <!--
                 <div role="tabpanel" class="tab-pane text-center" id="messages">
-                    <form role="form " data-toggle="validator">
+                    <form role="form " data-toggle="validator" action="{{url('changepassword')}}" method="POST">
                         <div class="form-group col-md-6 col-md-offset-3">
                             <label for="inputPassword" class="control-label">Password</label>
                             <div class="form-group ">
                                 <input type="password" data-minlength="6" class="form-control" id="oldinputPassword" placeholder="輸入舊密碼" required>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
                                 <div class="help-block">至少六個字</div>
                             </div>
                             <div class="form-group ">
-                                <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="輸入新密碼" required>
+                                <input name='password' type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="輸入新密碼" required>
                                 <div class="help-block">至少六個字</div>
                             </div>
                             <div class="form-group ">
@@ -116,7 +149,7 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                     </form>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

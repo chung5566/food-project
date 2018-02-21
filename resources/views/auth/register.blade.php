@@ -106,8 +106,32 @@
                         <div class="form-group">
                                                         <label for="country" class="col-sm-4 control-label">區域/country</label>
                                                         <div class="col-sm-6">
-                                                            <input type="text" id="country" name="country">
-                                                            <input type="hidden" id="country_code">
+                                                            <select class="form-control" name="country">
+                                                              <option>台灣(北)</option>
+                                                              <option>台灣(中)</option>
+                                                              <option>台灣(南)</option>
+                                                              <option>台灣(東)</option>
+                                                              <option>中國 China</option>
+                                                              <option>香港，澳門</option>
+                                                              <option>日本 Japan</option>
+                                                              <option>韓國 Korea</option>
+                                                              <option>東南亞 Southeast Asia</option>
+                                                              <option>南亞 South Asia</option>
+                                                              <option>北亞 North Asia</option>
+                                                              <option>中亞 Central Asia</option>
+                                                              <option>西亞 West Asia</option>
+                                                              <option>東歐 Eastern Europe</option>
+                                                              <option>南歐 Southern Europe</option>
+                                                              <option>西歐 Western Europe</option>
+                                                              <option>北歐 Northern Europe</option>
+                                                              <option>中歐 Central Europe</option>
+                                                              <option>北美洲 North America</option>
+                                                              <option>中南美洲 Central and South America</option>
+                                                              <option>大洋洲 Oceania</option>
+                                                              <option>南北極 North and South Poles</option>
+                                                              <option>其他</option>
+
+                                                            </select>
                                                         </div>
                                                     </div>
                         <div class="form-group">

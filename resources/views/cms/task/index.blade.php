@@ -10,6 +10,7 @@
 
 		{{ csrf_field() }}
 		<div class="table-responsive text-center">
+			<form>
 			<table class="table table-borderless" id="table">
 				<thead>
 					<tr>
@@ -23,6 +24,63 @@
 						
 					</tr>
 				</thead>
+            @foreach($seasons as $task)
+        <tr class="item{{$task->id}}">
+          <td>{{$task->id}}</td>
+          <td>{{$task->name}}</td>
+          <td>temp</td>
+          <td>{{$task->created_at}}</td>
+          <td>
+            @if($task->article_type=='p')
+                                <img width="50px" height="50px" data-src="{{ $task->img_url }}"  src="<?php echo url('foodpic-upload')?>/{{$task->img_url}}" data-holder-rendered="true" style="display: block;">
+                          @else
+                          <img width="50px" height="50px" data-src="{{ $task->img_url }}"  src="{{ $task->img_url }}" data-holder-rendered="true" style="display: block;">
+            @endif
+          </td>
+          <td>{{$task->article_type}}</td>
+          <td>{{$task->popular}}</td>
+
+          <td><a href="{{url('tasks/')}}/{{$task->id}}" class="edit-modal btn btn-info" 
+               >
+              <span class="glyphicon glyphicon-edit"></span> 預覽
+            </a>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg{{$task->id}}">預覽留言</button>
+            <button class="delete-modal-task btn btn-danger"
+              data-id="{{$task->id}}" data-name="{{$task->name}}" >
+              <span class="glyphicon glyphicon-trash"></span> Delete
+            </button>
+             
+              <a id="recommand_food" type="button" style="padding:0px" class="recommand_food btn-warning ladda-button btn-fix" data-token="{{ csrf_token() }}" data-recommand='{{$task->id}}' style="margin-right:5px;"><span class="ladda-label">取消推薦</span></a>
+            
+            
+          </td>
+        </tr>
+<div class="modal fade bs-example-modal-lg{{$task->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    
+    <div class="modal-content">
+      <h1>留言板</h1>
+      @foreach($task->comments as $comment)
+      <div class="row item_comment{{$comment->id}}" style="margin:2px">
+        <div class="col-md-2">
+          {{$comment->user_id}}
+        </div>
+        <div class="col-md-8">
+          {{$comment->content}}
+        </div>
+        <div class="col-md-2 delete-modal-comment">
+          <button class="delete-modal btn btn-danger delete"
+        data-id="{{$comment->id}}"  >
+        <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
+</div>
+@endforeach
 				@foreach($tasks as $task)
 				<tr class="item{{$task->id}}">
 					<td>{{$task->id}}</td>
@@ -44,10 +102,15 @@
 							<span class="glyphicon glyphicon-edit"></span> 預覽
 						</a>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg{{$task->id}}">預覽留言</button>
-						<button class="delete-modal-task btn btn-danger"
+						<a class="delete-modal-task btn btn-danger"
 							data-id="{{$task->id}}" data-name="{{$task->name}}" >
 							<span class="glyphicon glyphicon-trash"></span> Delete
-						</button></td>
+						</a>
+					   
+      				<a id="recommand_food" type="button" style="padding:0px;" class="recommand_food btn-success ladda-button btn-fix" data-token="{{ csrf_token() }}" data-recommand='{{$task->id}}' style="margin-right:5px;"><span class="ladda-label">推薦</span></a>
+				    
+						
+					</td>
 				</tr>
 <div class="modal fade bs-example-modal-lg{{$task->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -64,9 +127,10 @@
       	</div>
       	<div class="col-md-2 delete-modal-comment">
       		<button class="delete-modal btn btn-danger delete"
-							data-id="{{$comment->id}}"  >
-							<span class="glyphicon glyphicon-trash"></span> Delete
-						</button>
+				data-id="{{$comment->id}}"  >
+				<span class="glyphicon glyphicon-trash"></span> Delete
+			</button>
+
       	</div>
       </div>
       @endforeach
@@ -75,6 +139,7 @@
 </div>
 @endforeach
 			</table>
+		</form>
 		</div>
 	</div>
 
@@ -152,6 +217,7 @@ $(function() {
         });
     });
         $('.delete-modal-comment').on('click', '.delete', function() {
+        	var id = $(this).data('id');
         $.ajax({
             type: 'post',
             url: 'cms_commentdelete',
@@ -161,9 +227,44 @@ $(function() {
             },
             success: function(data) {
             	
-                $('.item_comment'+$(this).data('id')).remove();
+                $('.item_comment'+id).remove();
             }
         });
+    });
+        $('.recommand_food').click(function(e) {
+
+        e.preventDefault();
+
+        var l = Ladda.create(this);
+        var token = $(this).data('token');
+        var recommand = $(this).data('recommand');
+        //var id = $(this).attr("id");  
+        //alert(token);
+
+
+        l.start();
+        
+        $.post("recommand_food", { "recommand_food": recommand, '_token': token }, function(response) {
+            
+            if (response.result != null && response.result == "1") {
+                
+                if (response.isunlike == "1") {
+                  $('.item'+recommand).find('.recommand_food').removeClass("btn-success");
+                  
+      
+                    $('.item'+recommand).find('.recommand_food').addClass("btn-warning");
+                    $('.item'+recommand).find('.recommand_food span:nth-child(1)').html(response.text);
+                    }
+                 else {
+                    $('.item'+recommand).find('.recommand_food').removeClass('btn-warning');
+                    $('.item'+recommand).find('.recommand_food').addClass("btn-success");
+                    $('.item'+recommand).find('.recommand_food span:nth-child(1)').html(response.text);
+                    
+                }
+            } else { alert("Server Error"); }
+        }, "json").always(function() { l.stop(); });
+        return false;
+        
     });
 });
 </script>

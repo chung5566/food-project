@@ -9,7 +9,7 @@
 
 <div class="container">
 	<div class='row' style="    display: flex;">
-	<div class="col-md-7">
+	<div class="col-md-7 col-xs-7">
 		<div role="tabpanel">
 
   <!-- Nav tabs -->
@@ -31,7 +31,7 @@
 		   <div role="tabpanel" class="tab-pane active" id="foodmine">
 		   	@foreach($tasks as $task)
 		    		<div class="row border-blue" style="margin:20px auto">
-		    		<div class="col-md-4"style="padding-left:0;">
+		    		<div class="col-md-4 col-xs-4"style="padding-left:0;">
 		    			<a href="{{URL::asset('tasks').'/'.$task->id}}" class="thumbnail">
 		    				@if($task->article_type=='p')
           <img data-src="holder.js/100%x180" alt="100%x180" style="height: 160px; width: 100%; display: block;" src="{{URL::asset('foodpic-upload').'/'.$task->img_url}}" data-holder-rendered="true">
@@ -39,7 +39,7 @@
         	<img data-src="holder.js/100%x180" alt="100%x180" style="height: 160px; width: 100%; display: block;" src="{{$task->img_url}}" data-holder-rendered="true">
         			@endif</a>				
 		    		</div>
-		    		<div class="col-md-8" >
+		    		<div class="col-md-8 col-xs-8" >
 		    			<h3 class="bold">{{$task->name}} <button type="button" class="btn-fix" style="float:right"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>已收藏</button></h3>
 		    			<div style="margin-right:10%">{{$task->shortintro}}</div>
 		    		</div>
@@ -49,7 +49,7 @@
 				<div role="tabpanel" class="tab-pane " id="foodthey">
 		@foreach($collect as $task)
 		    		<div class="row border-blue" style="margin:20px auto">
-		    		<div class="col-md-4"style="padding-left:0;">
+		    		<div class="col-md-4 col-xs-4"style="padding-left:0;">
 		    			<a href="{{ URL::asset('tasks/').'/'.$task->id}}" class="thumbnail">
 		    				@if($task->article_type=='p')
           <img data-src="holder.js/100%x180" alt="100%x180" style="height: 160px; width: 100%; display: block;" src="{{URL::asset('foodpic-upload').'/'.$task->img_url}}" data-holder-rendered="true">
@@ -57,7 +57,7 @@
         	<img data-src="holder.js/100%x180" alt="100%x180" style="height: 160px; width: 100%; display: block;" src="{{$task->img_url}}" data-holder-rendered="true">
         			@endif</a>				
 		    		</div>
-		    		<div class="col-md-8" >
+		    		<div class="col-md-8 col-xs-8" >
 		    			<h3 class="bold">{{$task->name}} <button type="button" class="btn-fix" style="float:right"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>已收藏</button></h3>
 		    			<div style="margin-right:10%">{{$task->shortintro}}</div>
 		    		</div>
@@ -77,24 +77,24 @@
 		   <div role="tabpanel" class="tab-pane active" id="itemmine">
 
 		    		<div class="row border-blue" style="margin:20px auto">
-		    		<div class="col-md-4"style="padding-left:0;">
+		    		<div class="col-md-4 col-xs-4"style="padding-left:0;">
 		    			<a href="#" class="thumbnail">
           <img data-src="holder.js/100%x180" alt="100%x180" style="height: 160px; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjYxIiB5PSI5MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE3MXgxODA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
         </a>
 		    		</div>
-		    		<div class="col-md-8" >
+		    		<div class="col-md-8 col-xs-8" >
 		    			<h3 class="bold">西班牙海鮮燉飯 <button type="button" class="btn-fix" style="float:right"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>收藏數:</button></h3>
 		    			<div style="margin-right:10%">說明說明>說明說明>說明說明>說明說明>說明說明>說明說明>說明說明>說明說明</div>
 		    		</div>
 
 					</div>
 		    		<div class="row border-blue" style="margin:20px auto">
-		    		<div class="col-md-4"style="padding-left:0;">
+		    		<div class="col-md-4 col-xs-4"style="padding-left:0;">
 		    			<a href="#" class="thumbnail">
           <img data-src="holder.js/100%x180" alt="100%x180" style="height: 160px; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjYxIiB5PSI5MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE3MXgxODA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
         </a>
 		    		</div>
-		    		<div class="col-md-8" >
+		    		<div class="col-md-8 col-xs-8" >
 		    			<h3 class="bold">西班牙海鮮燉飯 <button type="button" class="btn-fix" style="float:right"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>收藏數:</button></h3>
 		    			<div style="margin-right:10%">說明說明>說明說明>說明說明>說明說明>說明說明>說明說明>說明說明>說明說明</div>
 		    		</div>
@@ -115,24 +115,24 @@
 		   <div role="tabpanel" class="tab-pane active" id="messagemine">
 
 		    		<div class="row border-blue" style="margin:20px auto">
-		    		<div class="col-md-4"style="padding-left:0;">
+		    		<div class="col-md-4 col-xs-4"style="padding-left:0;">
 		    			<a href="#" class="thumbnail">
           <img data-src="holder.js/100%x180" alt="100%x180" style="height: 160px; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjYxIiB5PSI5MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE3MXgxODA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
         </a>
 		    		</div>
-		    		<div class="col-md-8" >
+		    		<div class="col-md-8 col-xs-8" >
 		    			<h3 class="bold">西班牙海鮮燉飯 <button type="button" class="btn-fix" style="float:right"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>收藏數:</button></h3>
 		    			<div style="margin-right:10%">說明說明>說明說明>說明說明>說明說明>說明說明>說明說明>說明說明>說明說明</div>
 		    		</div>
 
 					</div>
 		    		<div class="row border-blue" style="margin:20px auto">
-		    		<div class="col-md-4"style="padding-left:0;">
+		    		<div class="col-md-4 col-xs-4"style="padding-left:0;">
 		    			<a href="#" class="thumbnail">
           <img data-src="holder.js/100%x180" alt="100%x180" style="height: 160px; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjYxIiB5PSI5MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE3MXgxODA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
         </a>
 		    		</div>
-		    		<div class="col-md-8" >
+		    		<div class="col-md-8 col-xs-8" >
 		    			<h3 class="bold">西班牙海鮮燉飯 <button type="button" class="btn-fix" style="float:right"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>收藏數:</button></h3>
 		    			<div style="margin-right:10%">說明說明>說明說明>說明說明>說明說明>說明說明>說明說明>說明說明>說明說明</div>
 		    		</div>
@@ -148,14 +148,14 @@
 </div>
 </ul>
 	</div>
-	<div class="col-md-4" style="margin:0px auto">
+	<div class="col-md-4 col-xs-4" style="margin:0px auto">
 		<div class="row border-blue">
 		<div class="row " id="namepic"style='margin:0px'>
-			<div  class="col-md-8"style="padding-right:0">
+			<div  class="col-md-8 col-xs-8"style="padding-right:0">
 				<div id="username"><h1 style="margin-bottom:20px"><span style="margin-right:20px;">{{$member[0]->name}}</span></h1></div>
 			</div>
 
-			<div class="col-md-4"style="display:flex">
+			<div class="col-md-4 col-xs-4"style="display:flex">
 <img data-src="holder.js/140x140" class="img-circle" alt="140x140" style="width: 100px; height: 100px;" src="{{URL::asset('user-upload').'/'.$member[0]->user_img}}" data-holder-rendered="true">
 			</div>
 		</div>
@@ -170,9 +170,9 @@
 	</div>
 			<div class="row" style="background:#cccccc;border:solid 2px #b0b1b1">
 			<div class="row" style="margin:15px;    text-align: center;font-weight:bolder">
-				<div class="col-md-4">食譜 {{count($tasks)}}</div>
-				<div class="col-md-4"style="border-right:2px solid black;border-left:2px solid black">收藏 {{count($collect)}}</div>
-				<div class="col-md-4">粉絲 {{$fans}}</div>
+				<div class="col-md-4 col-xs-4">食譜 {{count($tasks)}}</div>
+				<div class="col-md-4 col-xs-4"style="border-right:2px solid black;border-left:2px solid black">收藏 {{count($collect)}}</div>
+				<div class="col-md-4 col-xs-4">粉絲 {{$fans}}</div>
 			</div>
 
 		</div>
